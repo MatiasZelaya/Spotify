@@ -1,0 +1,33 @@
+<div>
+    <form novalidate [formGroup]="Artist" (ngSubmit)="SearchArtist()">
+      <div class="form-group">
+        <input 
+            type="text" 
+            class="form-control" 
+            id="NameArtist"
+            placeholder="Type the name of your favorite artist"
+            formControlName="NameArtist"
+            minlength="1"
+        />
+      </div>
+      
+    </form>
+      <artist></artist>
+        <div class="col-md-offset-2 ">  
+     <div *ngFor="let Album of ArtistAlbums?.items" > <!--[hidden]="AlbumTracks?.items"-->
+        <div class="col-md-5 Images Albums">
+            <img (click)="getTracks(Album.id)" id={{Album.id}} class="img-circle" src={{Album?.images[2].url}}>
+            <span>CD -- {{ArtistAlbums.items.key}}{{Album.name}}</span>  
+           <div  *ngFor="let Tracks of AlbumTracks?.items" >
+            <div class="Audios">
+            <audio controls="controls" type="audio/mpeg" src={{Tracks.preview_url}}>
+            Your browser does not support the audio element.
+            </audio>
+            <span>{{Tracks.name}}</span>
+            </div>
+          </div>
+           </div>
+     </div>
+          </div>
+           
+      

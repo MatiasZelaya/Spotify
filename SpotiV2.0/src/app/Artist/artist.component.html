@@ -1,0 +1,6 @@
+<div *ngIf="ArtistArray.artists" >
+    <div *ngFor="let Artist of ArtistArray.artists.item">
+        <h2>{{Artist.name}}</h2>
+        <img src={{Artist.images[2]}}>
+    </div>
+</div>
