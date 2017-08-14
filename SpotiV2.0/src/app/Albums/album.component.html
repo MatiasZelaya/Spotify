@@ -1,0 +1,10 @@
+<div *ngIf="!!ArtistAlbums?.items">
+    <div class="col-md-offset-2 ">
+        <div *ngFor="let Album of ArtistAlbums?.items">
+            <div class="col-md-5 Images Albums">
+                <img (click)="getTracks(Album.id)" [id]=Album.id class="img-circle Images" [src]="!!Album.images[0]?.url ? Album.images[0]?.url : './src/app/Albums/no-img.jpg'" >
+                <span>CD -- {{Album.name}}</span>
+            </div>
+        </div>
+    </div>
+</div>

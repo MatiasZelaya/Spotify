@@ -9,6 +9,7 @@ import { SpotifyService1 } from './spotify/spotify.component';
 import { SearchComponent } from './search/search.component';
 import { AppRoutingModule, routedComponents } from './app-routing.module';
 import { ArtistComponent } from "./Artist/artist.component";
+import { AlbumComponent } from "./Albums/album.component";
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { ArtistComponent } from "./Artist/artist.component";
   declarations: [
     AppComponent,
     ArtistComponent,
+    AlbumComponent,
     SearchComponent,
     routedComponents    
   ],

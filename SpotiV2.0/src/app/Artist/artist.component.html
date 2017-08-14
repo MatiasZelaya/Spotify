@@ -1,6 +1,12 @@
-<div *ngIf="ArtistArray.artists" >
-    <div *ngFor="let Artist of ArtistArray.artists.item">
-        <h2>{{Artist.name}}</h2>
-        <img src={{Artist.images[2]}}>
+<div *ngIf="!!ArtistArray.artists">
+    <h2>Your are currently searching:"{{this._SearchComponent.Artist.value.NameArtist}}"</h2>
+    <div class="col-md-offset-2">
+        <div *ngFor="let Artist of ArtistArray.artists.items">
+            <div class="col-md-5 Artists" (click)="getAlbums(Artist.id)">
+                <h2 class="Texto">{{Artist.name}}</h2>
+                <img class="img-rounded Imagenes center-block" [src]="!!Artist.images[0]?.url ? Artist.images[0].url : './src/app/Artist/no-img.jpg'">
+            </div>
+        </div>
     </div>
 </div>
+<albums [ArtistAlbums]="ArtistAlbums"></albums>
