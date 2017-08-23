@@ -1,20 +1,19 @@
-<h3>Welcome to</h3>
-<h1>Spotisearch</h1>
-
-<div>
-  <form novalidate [formGroup]="Artist" (ngSubmit)="SearchArtist()">
-    <div class="form-group">
-      <input type="text" class="form-control" id="NameArtist" placeholder="Type the name of your favorite artist" formControlName="NameArtist"
-        minlength="1" />
-    </div>
-  </form>
-  <artist [ArtistArray]="ArtistArray"></artist>
-  <div *ngFor="let Tracks of AlbumTracks?.items">
-    <div class="Audios">
-      <audio controls="controls" type="audio/mpeg" src={{Tracks.preview_url}}>
-        Your browser does not support the audio element.
-      </audio>
-      <span>{{Tracks.name}}</span>
-    </div>
+<div class="container">
+  <nav><img src="./SpotifyLogo.png" class="Images"></nav>
+<div *ngIf="!ArtistArray.artists">
+  <h3 class="letters" ><strong>Welcome to</strong></h3>
+  <h1 class="letters"><strong>Spotisearch</strong></h1>
+  <h4 class="letters" >Search your favourite songs over Spotify, just enter an artist's name in the following search box and enjoy!</h4>
+</div> 
+  <h1 class="letters" *ngIf="ArtistArray.artists">Artists</h1>
+  <h4 class="letters" *ngIf="ArtistArray.artists">Your are currently searching:"{{this.artistas}}"</h4>
+  <div>
+    <form novalidate [formGroup]="Artist" (ngSubmit)="SearchArtist()">
+      <div class="form-group">
+        <input type="text" autocomplete="off" class="form-control" id="NameArtist" [placeholder]="!!ArtistArray?.artists ? 'Search for another artist' : 'Type the name of your favorite artist'"
+          formControlName="NameArtist" minlength="1" />
+      </div>
+    </form>
+    <artists [ArtistArray]="ArtistArray"></artists>
   </div>
 </div>

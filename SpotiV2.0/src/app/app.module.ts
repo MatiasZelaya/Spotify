@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
-
-import { AuthorizationService } from './Authorization/authorization.service'
 import { AppComponent } from './app.component';
-import { SpotifyService1 } from './spotify/spotify.component';
+import { SpotifyService1 } from './spotify/spotify.service';
 import { SearchComponent } from './search/search.component';
-import { AppRoutingModule, routedComponents } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { ArtistComponent } from "./Artist/artist.component";
 import { AlbumComponent } from "./Albums/album.component";
+import { AuthorizationComponent } from "./Authorization-Component/authorization.component";
+import { TracksComponent } from "./Tracks/tracks.component";
 
 
 @NgModule({
@@ -21,12 +21,14 @@ import { AlbumComponent } from "./Albums/album.component";
   ],
   declarations: [
     AppComponent,
+    SearchComponent,
     ArtistComponent,
     AlbumComponent,
-    SearchComponent,
-    routedComponents    
+    TracksComponent,
+    AuthorizationComponent
+    //routedComponents    
   ],
   bootstrap: [AppComponent],
-  providers: [SpotifyService1,AuthorizationService]
+  providers: [SpotifyService1]
 })
 export class AppModule { }

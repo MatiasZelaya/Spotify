@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthorizationService } from '../Authorization/authorization.service'
 import { ActivatedRoute,Params } from "@angular/router";
 
 
@@ -12,10 +11,10 @@ import { ActivatedRoute,Params } from "@angular/router";
 export class AuthorizationComponent implements OnInit{
   request:any = [ ]
   answer:any = [ ]
-  constructor(private route:ActivatedRoute, private _Authorization:AuthorizationService){}
-  scope = `playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private streaming ugc-image-upload user-follow-modify user-follow-read user-library-read user-library-modify user-read-private user-read-birthdate user-read-email user-top-read`
-  client_id = '68a037b14896443397df02d518980701'
-  redirect_uri='http://localhost:8080/callback'
+  constructor(private route:ActivatedRoute){}
+  scope = `user-follow-modify user-follow-read user-library-read user-library-modify user-read-private user-read-birthdate user-read-email user-top-read`
+  client_id = '08889519b4c24d199dcfa8a0c731c598'
+  redirect_uri='http://localhost:8080/set-token'
   response_type='token'
   token:string
     url1 = 'http://localhost:8080/search';
@@ -29,21 +28,15 @@ export class AuthorizationComponent implements OnInit{
     window.location.href = this.url
     let tokenRoute = this.route.fragment.map(fragment => fragment);
     tokenRoute.subscribe(fragment => {
-      let fragment1 = fragment.match(/^(.*?)&/);
-         if (fragment1) {
+      let fragment1 = !!fragment ? fragment.match(/^(.*?)&/) : '';
+         if (!!fragment1) {
         this.token = fragment1[1].replace('access_token=', '');
-         return localStorage.setItem('token',this.token)
+         localStorage.setItem('token',this.token)
+         window.location.href = this.url1;
         }  
     }) 
-      window.location.href = this.url1;
+    /*this.route.snapshot.params.subscribe((snapshot:any) =>{
+        console.log(snapshot)
+    })*/
 }
     }
- /* getToukens(){
-    let code:any
-    this._Authorization.sendToken('https://accounts.spotify.com/api/token','authorization_code',code,'http://localhost:8080/callback')
-    .then((response)=>{
-      this.answer = response
-      console.log(this.answer)
-    })
-  }
-}*/

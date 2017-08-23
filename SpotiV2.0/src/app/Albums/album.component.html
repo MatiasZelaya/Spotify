@@ -1,10 +1,11 @@
 <div *ngIf="!!ArtistAlbums?.items">
-    <div class="col-md-offset-2 ">
+    <img class="img-rounded ArtistImage" [src]="!!ArtistArray.images[0].url ? ArtistArray.images[0].url : './src/app/Albums/no-img.jpg'">
+    <h1 class="ArtistText">{{ArtistArray.name}} </h1>
+    <h2 class="ArtistText">{{ArtistArray.genres[0]}}</h2>
+    <div class="col-md-offset-2 Albums">
         <div *ngFor="let Album of ArtistAlbums?.items">
-            <div class="col-md-5 Images Albums">
-                <img (click)="getTracks(Album.id)" [id]=Album.id class="img-circle Images" [src]="!!Album.images[0]?.url ? Album.images[0]?.url : './src/app/Albums/no-img.jpg'" >
-                <span>CD -- {{Album.name}}</span>
-            </div>
+            <img [routerLink]="['/tracks', ArtistArray.name,ArtistArray.id,Album.name, Album.id]" [id]=Album.id class="img-circle Images" [src]="!!Album.images[0]?.url ? Album.images[0]?.url : './src/app/Albums/no-img.jpg'">
+            <span>CD  {{Album.name}}</span>
         </div>
     </div>
 </div>
