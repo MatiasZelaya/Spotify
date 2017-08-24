@@ -1,9 +1,11 @@
 <div *ngIf="!!ArtistArray.artists">
     <div class="col-md-offset-2">
         <div *ngFor="let Artist of ArtistArray.artists.items">
-            <div class="col-md-5 Artists">
+            <div class="col-md-5 Artists iframe">
                 <h2 class="Texto letters">{{Artist.name}}</h2>
                 <img class="img-rounded Imagenes center-block" [routerLink]="['/albums', Artist.name,Artist.id]" [src]="!!Artist.images[0]?.url ? Artist.images[0].url : './src/app/Artist/no-img.jpg'">
+                <iframe [src]="getUrl(Artist.id)" width="200"
+                    height="25" scrolling="no" frameborder="0" style=" padding-left:7%; padding-right:7%; border:none; overflow:hidden;" allowtransparency="true"></iframe>
                 <router-outlet>
                 </router-outlet>
             </div>

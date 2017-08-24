@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Routes, RouterModule, ActivatedRoute } from '@angular/router'
 import { SpotifyService1 } from '../spotify/spotify.service'
+import { DomSanitizer } from "@angular/platform-browser";
 
 @Component({
     selector: 'tracks',
@@ -17,14 +18,13 @@ export class TracksComponent implements OnInit {
     Tracks: any = [];
 
     date: any;
-    constructor(private _spotifyService: SpotifyService1, private _ActivatedRoute: ActivatedRoute) {
+    constructor(public _DomSanitizer:DomSanitizer, private _spotifyService: SpotifyService1, private _ActivatedRoute: ActivatedRoute) {
     }
     ngOnInit() {
         this.SearchArtist(this._ActivatedRoute.snapshot.params.ArtistId);
         this.getAlbum(this._ActivatedRoute.snapshot.params.id);
         this.getTracks(this._ActivatedRoute.snapshot.params.id);
         this.getFavorites();
-
     }
     SearchArtist(id: any) {
         this._spotifyService.getArtist('https://api.spotify.com/v1/artists/', id).then((response) => {
@@ -75,6 +75,11 @@ export class TracksComponent implements OnInit {
             }
             console.log('favoritos', this.Favorites)
         })
+    }
+    getUrl(id:any){
+        let url = "https://open.spotify.com/embed?uri=spotify%3Atrack%3A";
+        let url2 = url + id;
+        return this._DomSanitizer.bypassSecurityTrustResourceUrl(url2);
     }
 }
 //this.favourites.push(id)
