@@ -36,11 +36,8 @@ export class TracksComponent implements OnInit {
         if (id) {
             this._spotifyService.getAlbum('https://api.spotify.com/v1/albums/', id).then((response) => {
                 this.ArtistAlbums = response;
-                console.log('Artistas', this.ArtistAlbums);
                 this.date = new Date(this.ArtistAlbums.release_date);
-                console.log('Primera fecha', this.date)
                 this.date = this.date.getFullYear();
-                console.log('ajam', this.date);
             })
         }
     }
@@ -48,7 +45,6 @@ export class TracksComponent implements OnInit {
         console.log(id);
         this._spotifyService.getTracks('https://api.spotify.com/v1/albums/', id).then((response) => {
             this.AlbumTracks = response;
-            console.log('Tracks', this.AlbumTracks);
         });
     }
     putFavorites(id: any) {
@@ -64,7 +60,7 @@ export class TracksComponent implements OnInit {
         }
     }
     getFavorites() {
-        this._spotifyService.getFavorites('https://api.spotify.com/v1/me/tracks?limit=20').then((response) => {
+        this._spotifyService.getFavoritesTracks('https://api.spotify.com/v1/me/tracks?limit=50').then((response) => {
             this.Favorites = response.items
             if (this.Favorites) {
                 let i = 0;

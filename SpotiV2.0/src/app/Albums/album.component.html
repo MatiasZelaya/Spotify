@@ -1,11 +1,25 @@
+<div class="container">
+    <nav><img src="./SpotifyLogo.png" class="Logo">
+        <search class="Search"></search>
+    </nav>
+</div>
 <div *ngIf="!!ArtistAlbums?.items">
-    <img class="img-rounded ArtistImage" [src]="!!ArtistArray.images[0].url ? ArtistArray.images[0].url : './src/app/Albums/no-img.jpg'">
-    <h1 class="letters">{{ArtistArray.name}} </h1>
-    <h2 class="letters">{{ArtistArray.genres[0]}}</h2>
-    <div class="col-md-offset-2 Albums">
+    <div class=" orden">
+        <img class="img-rounded ArtistImage" [src]="!!ArtistArray.images[0].url ? ArtistArray.images[0].url : './src/app/Albums/no-img.jpg'">
+        <div>
+            <h1 class="letters Name">{{ArtistArray.name}} </h1>
+            <h2 class="letters Genrer">{{ArtistArray.genres[0]}}</h2>
+        </div>
+    </div>
+    <div class="col-md-offset-1">
         <div *ngFor="let Album of ArtistAlbums?.items">
-            <img [routerLink]="['/tracks', ArtistArray.name,ArtistArray.id,Album.name, Album.id]" [id]=Album.id class="img-circle Images" [src]="!!Album.images[0]?.url ? Album.images[0]?.url : './src/app/Albums/no-img.jpg'">
-            <span class="letters">CD  {{Album.name}}</span>
+            <div class="col-md-5 Style Names">
+                <img [id]=Album.id class="img-circle Images" [src]="!!Album.images[0]?.url ? Album.images[0]?.url : './src/app/Albums/no-img.jpg'"
+                    [routerLink]="['/tracks', ArtistArray.name,ArtistArray.id,Album.name, Album.id]">
+                <span class="letters">{{Album.name}} </span>
+                <span (click)="putFavoritesAlbums(Album.id);" [title]="Favorite.includes(Album.id) ? 'UnFollow Album' : 'Folow Album' " class="star glyphicon"
+                    [ngClass]="Favorite.includes(Album.id) ? 'glyphicon-star' : 'glyphicon-star-empty' "></span>
+            </div>
         </div>
     </div>
 </div>

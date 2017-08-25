@@ -2,13 +2,13 @@
     <img class="img-rounded ArtistImage" [src]="!!ArtistAlbums?.images[0].url ? ArtistAlbums.images[0].url : './src/app/Albums/no-img.jpg'">
     <h1 class="letters">{{ArtistAlbums.name}} - {{this.date}}</h1>
     <h3 class="letters">{{ArtistAlbums.artists[0].name}} </h3>
-    <div *ngFor="let Track of AlbumTracks?.items">
-        <div class="Audios">
-            <span class="letters">{{Track.name}}</span>
+    <div class="col-md-offset-2" *ngFor="let Track of AlbumTracks?.items">
+        <div class="letters col-md-5 Style">
+            <span style="font-size:0.5cm">{{Track.name}}</span>
             <audio controls="controls" type="audio/mpeg" [src]=Track.preview_url>
                 Your browser does not support the audio element.
             </audio>
-            <span (click)="putFavorites(Track.id);" class="star glyphicon" [ngClass]="Favorite.includes(Track.id) ? 'glyphicon-star' : 'glyphicon-star-empty' "></span>
+            <span (click)="putFavorites(Track.id);" [title]="Favorite.includes(Track.id) ? 'UnFollow Song' : 'Folow Song' " class="star glyphicon" [ngClass]="Favorite.includes(Track.id) ? 'glyphicon-star' : 'glyphicon-star-empty' "></span>
         </div>
     </div>
 </div>

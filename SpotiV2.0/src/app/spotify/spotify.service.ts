@@ -24,6 +24,7 @@ export class SpotifyService1 {
     return this._http.get(api, { headers: headers, body: '' }).map((response) => response.json())
       .toPromise()
   }
+  
   public getAlbums(api: string, id: any, type: any): Promise<any> {
     api = api + '/' + id + '/' + type
     let headers = new Headers({
@@ -99,10 +100,9 @@ export class SpotifyService1 {
       headers.append('Authorization', 'Bearer ' + token);
     }
     return this._http.put(api, null, { headers: headers }).toPromise()
-      
   }
 
-  public getFavorites(api: string): Promise<any> {
+  public getFavoritesTracks(api: string): Promise<any> {
     api = api
     let headers = new Headers({
       'Accept': 'application/json'
@@ -112,6 +112,60 @@ export class SpotifyService1 {
       headers.append('Authorization', 'Bearer ' + token);
     }
     return this._http.get(api, { headers: headers, body: '' }).map((response) => response.json())
+      .toPromise()
+  }
+
+  public getFavoritesArtists(api: string): Promise<any> {
+    api = api
+    let headers = new Headers({
+      'Accept': 'application/json'
+    })
+    let token = localStorage.getItem('token');
+    if (token) {
+      headers.append('Authorization', 'Bearer ' + token);
+    }
+    return this._http.get(api, { headers: headers, body: '' }).map((response) => response.json())
+      .toPromise()
+  }
+
+  public putFavoritesAlbums(api: string, id: string): Promise<any> {
+    api = api + id
+    console.log(api)
+    let headers = new Headers({
+      'Accept': 'application/json'
+    })
+    let token = localStorage.getItem('token');
+    if (token) {
+      headers.append('Authorization', 'Bearer ' + token);
+    }
+    return this._http.put(api, null, { headers: headers }).toPromise()
+  }
+
+  public getFavoritesAlbums(api: string): Promise<any> {
+    api = api
+    console.log(api)
+    let headers = new Headers({
+      'Accept': 'application/json'
+    })
+    let token = localStorage.getItem('token');
+    if (token) {
+      headers.append('Authorization', 'Bearer ' + token);
+    }
+    return this._http.get(api, { headers: headers }).map((response) => response.json())
+      .toPromise()
+  }
+
+  public deleteFavoritesAlbums(api: string, id: string): Promise<any> {
+    api = api + id
+    console.log(api)
+    let headers = new Headers({
+      'Accept': 'application/json'
+    })
+    let token = localStorage.getItem('token');
+    if (token) {
+      headers.append('Authorization', 'Bearer ' + token);
+    }
+    return this._http.delete(api, { headers: headers })
       .toPromise()
   }
 }

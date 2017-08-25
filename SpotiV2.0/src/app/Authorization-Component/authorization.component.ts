@@ -17,7 +17,7 @@ export class AuthorizationComponent implements OnInit{
   redirect_uri='http://localhost:8080/set-token'
   response_type='token'
   token:string
-    url1 = 'http://localhost:8080/search';
+    url1 = 'http://localhost:8080/home';
     url = 'https://accounts.spotify.com/authorize?' +
             'response_type=' + this.response_type +
             '&client_id=' + this.client_id +

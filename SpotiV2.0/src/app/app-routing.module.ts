@@ -5,13 +5,14 @@ import { AuthorizationComponent } from './Authorization-Component/authorization.
 import { ArtistComponent } from "./Artist/artist.component";
 import { AlbumComponent } from "./Albums/album.component";
 import { TracksComponent } from "./Tracks/tracks.component";
+import { PresentationComponent } from "./Presentation/presentantion.component";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'set-token' },
   { path: 'set-token', component: AuthorizationComponent },
-  { path: 'search', component: SearchComponent },
+  { path: 'home', component: PresentationComponent },
   { path: 'albums/:name/:id', component: AlbumComponent },
-  { path: 'artist', component: ArtistComponent },
+  { path: 'artists/:search', component: ArtistComponent },
   { path: 'tracks/:name/:ArtistId/:album/:id', component: TracksComponent }
 ];
 

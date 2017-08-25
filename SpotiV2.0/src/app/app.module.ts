@@ -10,6 +10,8 @@ import { ArtistComponent } from "./Artist/artist.component";
 import { AlbumComponent } from "./Albums/album.component";
 import { AuthorizationComponent } from "./Authorization-Component/authorization.component";
 import { TracksComponent } from "./Tracks/tracks.component";
+import { PresentationComponent } from "./Presentation/presentantion.component";
+import { FavoritesComponent } from "./Favorites/favorite.component";
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { TracksComponent } from "./Tracks/tracks.component";
     SearchComponent,
     ArtistComponent,
     AlbumComponent,
+    PresentationComponent,
     TracksComponent,
+    FavoritesComponent,
     AuthorizationComponent
     //routedComponents    
   ],

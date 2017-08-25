@@ -1,4 +1,9 @@
-<div *ngIf="!!ArtistArray.artists">
+<nav><img src="./SpotifyLogo.png" class="Images"> 
+</nav>
+<div *ngIf="!!ArtistArray.artists" class="container">
+        <h1 class="letters" >Artists</h1>
+        <h4 class="letters" >Your are currently searching:"{{this._ActivedRoute.snapshot.params.search}}"</h4>
+        <search></search>
     <div class="col-md-offset-2">
         <div *ngFor="let Artist of ArtistArray.artists.items">
             <div class="col-md-5 Artists iframe">

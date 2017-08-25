@@ -1,0 +1,18 @@
+<div>
+    <h1 class="letters Alineado"><strong>Favorite Artists</strong></h1>
+    <div class="Favorite" *ngFor="let Artists of FavoriteArtists">
+        <img class="ArtistImage" [title]="Artists.name" [src]="!!Artists.images.length ? Artists.images[0]?.url : './src/app/Favorites/no-img.jpg'">
+    </div>
+</div>
+<div style="clear:left;">
+    <h1 class="letters Alineado" ><strong>Favorite Albums</strong></h1>
+    <div class="Favorite" *ngFor="let Albums of FavoriteAlbums">
+        <img class="ArtistImage" [title]="Albums.album.name" [src]="!!Albums.album.images.length ? Albums.album.images[0]?.url : './src/app/Favorites/no-img.jpg'">
+    </div>
+</div>
+<div style="clear:left;">
+    <h1 class="letters Alineado"><strong>Favorite Tracks</strong></h1>
+    <div class="Favorite" *ngFor="let Tracks of FavoriteTracks">
+            <img class="ArtistImage" [title]="Albums.album.name" [src]="!!Albums.album.images.length ? Albums.album.images[0]?.url : './src/app/Favorites/no-img.jpg'">
+        </div>
+</div>
